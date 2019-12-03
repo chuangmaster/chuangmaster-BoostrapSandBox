@@ -41,7 +41,140 @@
         </div>
       </div>
     </nav>
+    <div class="container-fluid mt-3">
+      <div class="row mb-3">
+        <div class="col-md-3">
+          <div class="input-group">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search for..."
+              aria-label="Recipient's username"
+              aria-describedby="button-addon2"
+              data-toggle="tooltip"
+              data-html="true"
+              title="type <em>enter</em> to seach!"
+            />
+            <span class="input-group-append">
+              <button
+                class="btn btn-secondary"
+                type="button"
+                id="button-addon2"
+              >
+                Go!
+              </button>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-9 text-right">
+          <div class="btn btn-primary">
+            <i class="fa fa-shopping-cart fa-1x"></i>
+            快速下單
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <table class="table table-responsive table-hover mb-0">
+      <thead>
+        <tr>
+          <th width="50">#</th>
+          <td>品項</td>
+          <td>Name</td>
+          <td>Email</td>
+          <td>狀態</td>
+          <td>金額</td>
+          <td width="100">操作</td>
+        </tr>
+      </thead>
+      <tr>
+        <th>1</th>
+        <td>肥皂</td>
+        <td>Helga <span class="badge badge-pill badge-danger">奧客</span></td>
+        <td>eating@gamil.com</td>
+        <td>出貨中</td>
+        <td class="text-right">NT$ 5,000</td>
+        <td>
+          <div
+            class="btn-group btn-group-sm"
+            role="group"
+            aria-label="First group"
+          >
+            <button type="button" class="btn btn-outline-secondary">
+              編輯
+            </button>
+            <button type="button" class="btn btn-outline-secondary">
+              查看
+            </button>
+            <div class="dropdown">
+              <a
+                class="btn btn-outline-secondary dropdown-toggle"
+                href="#"
+                role="button"
+                id="dropdownMenuLink"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                ...
+              </a>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" href="#">操作紀錄</a>
+                <a class="dropdown-item" href="#">資料匯出</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-danger" href="#">刪除訂單</a>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr class="table-danger">
+        <th>2</th>
+        <td>牙刷</td>
+        <td>Musk <span class="badge badge-pill badge-success">VIP</span></td></td>
+        <td>ccc@gamil.com</td>
+        <td>已退貨</td>
+        <td class="text-right">NT$ 3,100</td>
+        <td></td>
+      </tr>
+      <tr class="table-success">
+        <th>3</th>
+        <td>遊戲</td>
+        <td>Terry</td>
+        <td>abc@gamil.com</td>
+        <td>完成訂單</td>
+        <td class="text-right">NT$ 50,000</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td colspan="7">
+          <div class="progress">
+            <div
+              class="progress-bar progress-bar-striped progress-bar-animated"
+              role="progressbar"
+              aria-valuenow="75"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style="width: 75%"
+            ></div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="7">
+          ..
+        </td>
+      </tr>
+    </table>
+    <nav class="d-flex justify-content-center" aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+      </nav>
     <footer class="fixed-bottom text-center bg-light">
       <div class="container">
         <div class="row p-2">
