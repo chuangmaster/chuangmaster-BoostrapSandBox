@@ -67,7 +67,7 @@
           </div>
         </div>
         <div class="col-md-9 text-right">
-          <div class="btn btn-primary">
+          <div class="btn btn-primary" data-toggle="modal" data-target="#orderModal" data-title="快速下單">
             <i class="fa fa-shopping-cart fa-1x"></i>
             快速下單
           </div>
@@ -100,7 +100,7 @@
             role="group"
             aria-label="First group"
           >
-            <button type="button" class="btn btn-outline-secondary">
+            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#editModal" data-name="Helga" data-item="肥皂" data-mail="eating@gamil.com" data-status="出貨中" data-backdrop="static">
               編輯
             </button>
             <button type="button" class="btn btn-outline-secondary">
@@ -122,7 +122,7 @@
                 <a class="dropdown-item" href="#">操作紀錄</a>
                 <a class="dropdown-item" href="#">資料匯出</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-danger" href="#">刪除訂單</a>
+                <a class="dropdown-item text-danger" href="#" data-toggle="modal" data-target="#removeModal" data-backdrop="static" data-title="確認刪除 Helga 訂單#1(肥皂 NT5,000)" >刪除訂單</a>
               </div>
             </div>
           </div>
@@ -184,6 +184,122 @@
         </div>
       </div>
     </footer>
+    <div class="modal fade" id="orderModal" tabindex="-1" role="dialog" aria-labelledby="orderModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="orderModelLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="#">
+              <div class="form-group">
+                <label for="name">用戶名稱</label>
+                <input type="text" class="form-control" id="name">
+              </div>
+              <div class="form-group">
+                <label for="mail">Email address</label>
+                <input type="text" class="form-control" id="mail">
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="itme">品項</label>
+                    <input type="text" class="form-control" id="item">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="amount">數量</label>
+                    <select id="amount" class="form-control">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="orderModelLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="#">
+              <div class="form-group">
+                <label for="name">用戶名稱</label>
+                <input type="text" class="form-control" name="name">
+              </div>
+              <div class="form-group">
+                <label for="mail">Email address</label>
+                <input type="text" class="form-control" name="mail">
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="itme">品項</label>
+                    <input type="text" class="form-control" name="item">
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="amount">狀態</label>
+                    <input type="text" class="form-control" name="status">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="removeModal" tabindex="-1" role="dialog" aria-labelledby="removeModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header bg-danger text-white">
+            <h5 class="modal-title" id="removeModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              是否要刪除訂單
+          </div>
+          <div class="modal-footer p-3">
+            <div class="container px-0">
+              <div class="row justify-content-end">
+                <div class="col col-7"></div>
+                <div class="col-1">
+                    <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">否</button>
+                </div>
+                <div class="col-4">
+                    <button type="button" class="btn btn-outline-danger btn-block">是</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
   <!-- JavaScript -->
   <script
@@ -207,140 +323,32 @@
     $(document).ready(function() {
       $('[data-toggle="tooltip"]').tooltip();
 
+      $("#orderModal").on("show.bs.modal", function(event) {
+        let btn = $(event.relatedTarget);
+        let modal = $(this);
+        modal.find(".modal-title").text(btn.data("title"));
+      });
       // 編輯的 Modal 事件
-      $("#editModal").on("show.bs.modal", function(event) {});
+      $("#editModal").on("show.bs.modal", function(event) {
+        let btn = $(event.relatedTarget);
+        let modal = $(this);
+        let name = btn.data('name'); 
+        modal.find("input[name='name']").val(name);
+        let mail = btn.data('mail'); 
+        modal.find("input[name='mail']").val(mail);
+        let item = btn.data('item'); 
+        modal.find("input[name='item']").val(item);
+        let status = btn.data('status');
+        modal.find("input[name='status']").val(status);
 
-      $("#removeModal").on("show.bs.modal", function(event) {});
+      });
+
+      $("#removeModal").on("show.bs.modal", function(event) {
+        let btn = $(event.relatedTarget);
+        let modal = $(this);
+        modal.find("#removeModalLabel").text(btn.data("title"));
+
+      });
     });
-  </script>
-  <script>
-    window.chartColors = {
-      red: "rgb(255, 99, 132)",
-      orange: "rgb(255, 159, 64)",
-      yellow: "rgb(255, 205, 86)",
-      green: "rgb(75, 192, 192)",
-      blue: "rgb(54, 162, 235)",
-      purple: "rgb(153, 102, 255)",
-      grey: "rgb(201, 203, 207)"
-    };
-
-    var randomScalingFactor = function() {
-      return Math.round(Math.random() * 100);
-    };
-
-    var config = {
-      type: "pie",
-      data: {
-        datasets: [
-          {
-            data: [
-              randomScalingFactor(),
-              randomScalingFactor(),
-              randomScalingFactor(),
-              randomScalingFactor(),
-              randomScalingFactor()
-            ],
-            backgroundColor: [
-              window.chartColors.red,
-              window.chartColors.orange,
-              window.chartColors.yellow,
-              window.chartColors.green,
-              window.chartColors.blue
-            ],
-            label: "Dataset 1"
-          }
-        ],
-        labels: ["Red", "Orange", "Yellow", "Green", "Blue"]
-      },
-      options: {
-        responsive: true
-      }
-    };
-
-    // bar
-    var MONTHS = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December"
-    ];
-    var colors = Chart.helpers.color;
-    var barChartData = {
-      labels: ["January", "February", "March", "April", "May", "June", "July"],
-      datasets: [
-        {
-          label: "Dataset 1",
-          backgroundColor: colors(window.chartColors.red)
-            .alpha(0.5)
-            .rgbString(),
-          borderColor: window.chartColors.red,
-          borderWidth: 1,
-          data: [
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor()
-          ]
-        },
-        {
-          label: "Dataset 2",
-          backgroundColor: colors(window.chartColors.blue)
-            .alpha(0.5)
-            .rgbString(),
-          borderColor: window.chartColors.blue,
-          borderWidth: 1,
-          data: [
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor(),
-            randomScalingFactor()
-          ]
-        }
-      ]
-    };
-
-    window.onload = function() {
-      // pie
-      document.querySelectorAll(".chart-item").forEach(function(item) {
-        config.data.datasets.forEach(function(dataset) {
-          dataset.data = dataset.data.map(function() {
-            return randomScalingFactor();
-          });
-        });
-        var ctx = item.getContext("2d");
-        window.myPie = new Chart(ctx, config);
-      });
-
-      // bar
-      var barCtx = document.getElementById("barCanvas").getContext("2d");
-      window.myBar = new Chart(barCtx, {
-        type: "bar",
-        data: barChartData,
-        options: {
-          responsive: true,
-          legend: {
-            position: "top"
-          },
-          title: {
-            display: true,
-            text: "Chart.js Bar Chart"
-          }
-        }
-      });
-    };
   </script>
 </html>
